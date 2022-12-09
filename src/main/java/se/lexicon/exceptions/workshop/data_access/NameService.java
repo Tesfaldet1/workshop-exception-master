@@ -6,6 +6,7 @@ import java.util.Random;
 import se.lexicon.exceptions.workshop.domain.Gender;
 import se.lexicon.exceptions.workshop.domain.Person;
 import se.lexicon.exceptions.workshop.fileIO.CSVReader_Writer;
+import se.lexicon.exceptions.workshop.fileIO.DuplicateNameException;
 
 public class NameService {
 	
@@ -62,10 +63,18 @@ public class NameService {
 	     * @param name
 	     */
 	    public void addFemaleFirstName(String name){
-	    	femaleFirstNames.add(name);
-	    	CSVReader_Writer.saveFemaleNames(femaleFirstNames);
-	    		
-	    }
+
+			if (femaleFirstNames!=null) {
+				femaleFirstNames.add(name);
+				CSVReader_Writer.saveFemaleNames(femaleFirstNames);
+			}
+			else try {
+				throw new DuplicateNameException("The name already exist in your database", "--");
+			} catch (DuplicateNameException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
 
 	    /**
 	     * Here you need to check if List<String> maleFirstNames already contains the name
@@ -74,9 +83,17 @@ public class NameService {
 	     * @param name
 	     */
 	    public void addMaleFirstName(String name){
-	    	maleFirstNames.add(name);
-	        CSVReader_Writer.saveMaleNames(maleFirstNames);
-	    }
+			if(maleFirstNames !=null) {
+				maleFirstNames.add(name);
+
+				CSVReader_Writer.saveMaleNames(maleFirstNames);
+			}
+			else try {
+				throw new DuplicateNameException("The mael name is already exidst in your data base ", "--");
+			} catch (DuplicateNameException e) {
+				System.out.println(e.getMessage());
+			}
+		}
 
 	    /**
 	     * Here you need to check if List<String> lastNames already contains the name
@@ -85,9 +102,17 @@ public class NameService {
 	     * @param lastName
 	     */
 	    public void addLastName(String lastName){
-	    	lastNames.add(lastName);
-	        CSVReader_Writer.saveLastNames(lastNames);
-	    }
+			if(lastName !=null){
+				lastNames.add(lastName);
+				CSVReader_Writer.saveLastNames(lastNames);
+			}
+			else try {
+				throw new DuplicateNameException("The last Name is already exist in your data base","___");
+			} catch (DuplicateNameException e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
 
 
 	
