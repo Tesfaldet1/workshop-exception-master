@@ -18,7 +18,7 @@ public class CSVReader_Writer {
      * @return List<String>of male firstnames
      */
 
-    public static List<String> getMaleFirstNames ()throws FileNotFoundException {
+    public static List<String> getMaleFirstNames (){
         BufferedReader reader = null;
         try {
             reader = Files.newBufferedReader(Paths.get("firstname_males.txt"));
@@ -37,7 +37,12 @@ public class CSVReader_Writer {
                     reader.close();
                 }
             } catch (IOException e) {
-                throw new FileNotFoundException("this file is not fond", "-");
+                System.out.println(e.getMessage());
+                try {
+                    throw new FileNotFoundException("this file is not fond", "-");
+                } catch (FileNotFoundException ex) {
+                    System.out.println(ex.getMessage());;
+                }
             }
         }
 
