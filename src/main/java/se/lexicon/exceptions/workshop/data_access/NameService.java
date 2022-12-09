@@ -64,7 +64,7 @@ public class NameService {
 	     */
 	    public void addFemaleFirstName(String name){
 
-			if (femaleFirstNames!=null) {
+			if (femaleFirstNames==null) {
 				femaleFirstNames.add(name);
 				CSVReader_Writer.saveFemaleNames(femaleFirstNames);
 			}
@@ -83,7 +83,7 @@ public class NameService {
 	     * @param name
 	     */
 	    public void addMaleFirstName(String name){
-			if(maleFirstNames !=null) {
+			if(maleFirstNames ==null) {
 				maleFirstNames.add(name);
 
 				CSVReader_Writer.saveMaleNames(maleFirstNames);
@@ -102,7 +102,7 @@ public class NameService {
 	     * @param lastName
 	     */
 	    public void addLastName(String lastName){
-			if(lastName !=null){
+			if(lastName ==null){
 				lastNames.add(lastName);
 				CSVReader_Writer.saveLastNames(lastNames);
 			}
