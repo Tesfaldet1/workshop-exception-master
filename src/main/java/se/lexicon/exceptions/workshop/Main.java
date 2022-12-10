@@ -27,7 +27,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-
         NameService nameService = new NameService(maleFirstNames, femaleFirstNames,lastNames);
 
 

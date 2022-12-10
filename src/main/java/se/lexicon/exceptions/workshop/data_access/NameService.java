@@ -37,8 +37,6 @@ public class NameService {
 	        }
 	        return person;
 	    }
-
-
 	    public String getRandomFemaleFirstName(){
 	        return femaleFirstNames.get(random.nextInt(femaleFirstNames.size()));
 	    }
@@ -69,7 +67,7 @@ public class NameService {
 				CSVReader_Writer.saveFemaleNames(femaleFirstNames);
 			}
 			else try {
-				throw new DuplicateNameException("The name already exist in your database", "--");
+				throw new DuplicateNameException("The name already exist in your database", "the value of the femaleName is thrown: ");
 			} catch (DuplicateNameException e) {
 				System.out.println(e.getMessage());
 			}
